@@ -1,225 +1,128 @@
-@import url('https://fonts.googleapis.com/css?family=Indie+Flower');
-@import url('https://fonts.googleapis.com/css?family=Amatic+SC');
-
-body {
-  font-family: 'Indie Flower', cursive !important;
-  background: #FDE3A7; /*CAPE HONEY*/
-  margin: 0px;
-  padding: 0px;
+/* * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
 }
-
-::selection {
-  background: transparent;
+body { 
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    background: #ffe605;
+    background-size: cover;
+} */
+.main {
+    position: relative;
+    width: 500px;
+    height: 500px;
 }
-
-h4 {
-  font-size: 26px;
-  line-height: 1px;
-  font-family: 'Amatic SC', cursive !important;
+.wheel {
+    /* width: 100%; */
+    height: 100%;
+    position: relative; 
+    border-radius: 50%;
+    border: 10px solid #fff;
+    overflow: hidden;
+    transition: all ease 4s;
 }
-
-.color1{color:#1BBC9B}/*MOUNTAIN MEADOW*/
-.color2{color:#C0392B/*TALL POPPY*/}
-
-
-.card {
-  color: #013243; /*SHERPA BLUE*/
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 300px;
-  height: 400px;
-  background: #e0e1dc;
-  transform-style: preserve-3d;
-  transform: translate(-50%,-50%) perspective(2000px);
-  box-shadow: inset 300px 0 50px rgba(0,0,0,.5), 20px 0 60px rgba(0,0,0,.5);
-  transition: 1s;
+strong {
+    width: 50%;
+    height: 50%;
+    display: inline-block;
+    position: absolute;
 }
-
-.card:hover {
-  transform: translate(-50%,-50%) perspective(2000px) rotate(15deg) scale(1.2);
-  box-shadow: inset 20px 0 50px rgba(0,0,0,.5), 0 10px 100px rgba(0,0,0,.5);
+.strong1 {
+   clip-path: polygon( 100%, 100% 50%, 0 8%);
+   background-color: #ff1f1f;
+   top: 120px;
+   left: 0;
 }
+.strong2 {
+    clip-path: polygon(100% 92%, 0 50%, 100% 8%);
+    background-color: #19e3cf; 
+    top: 120px;
+    right: 0;
+ }
+ .strong3 {
+    clip-path: polygon(50% 0%, 8% 100%, 92% 100%);
+    background-color: #9e0bf3;
+    bottom: 0;
+    left: 120px;
+ }
+ .strong4 {
+    clip-path: polygon(50% 100%, 92% 0, 8% 0);
+    background-color: #15b600;
+    top: 0;
+    left: 120px;
+ }
+ .strong5 {
+    clip-path: polygon(0 40%, 100% 0%, 60% 100%);
+    background-color: #1f26ff; 
+    bottom: -2px; 
+    right: 242px;
+ }
+.strong6 {
+    clip-path: polygon(40% 100%, 0 0%, 100% 40%);
+    background-color: #ff5a5a;
+    bottom: -2px;
+    left: 242px;
+ }
+ .strong7 {
+    clip-path: polygon(60% 0, 100% 100%, 0 60%); 
+    background-color: #57fff1;
+    top: -2px;
+    right: 242px; 
+ }
+ .strong8 {
+    clip-path: polygon(0 100%, 100% 60%, 40% 0);
+    background-color: #ff9612;
+    top: -2px;
+    left: 242px;
+ } 
 
-.card:before {
-  content:'';
-  position: absolute;
-  top: -5px;
-  left: 0;
-  width: 100%;
-  height: 5px;
-  background: #BAC1BA;
-  transform-origin: bottom;
-  transform: skewX(-45deg);
+ strong small{
+    /* width: 65px; */
+    height: 65px;
+    font-size: 30px;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}  
+.spin {
+    position: absolute;
+    top: 43%;
+    left: 43%;
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    background-color: black;
+    color: #fff;
+    box-shadow: 0 5px 20px #000;
+    font-weight: bold;
+    font-size: 22px;
+    cursor: pointer;
+    animation: pulse 2s infinite;
 }
-
-.card:after {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: -5px;
-  width: 5px;
-  height: 100%;
-  background: #92A29C;
-  transform-origin: left;
-  transform: skewY(-45deg);
-}
-
-.card .imgBox {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  transform-origin: left;
-  transition: .7s;
-}
-
-.card .bark {
-  position: absolute;
-  background: #e0e1dc;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  transition: .7s;
-}
-
-.card .imgBox img {
-  min-width: 250px;
-  max-height: 400px;
-}
-
-.card:hover .imgBox {
-  transform: rotateY(-135deg);
-}
-
-.card:hover .bark {
-  opacity: 1;
-  transition: .6s;
-  box-shadow: 300px 200px 100px rgba(0, 0, 0, .4) inset;
-}
-
-.card .details {
-  position: absolute;
-  top: 0;
-  left: 0;
-  box-sizing: border-box;
-  padding: 0 0 0 10px;
-  z-index: -1;
-  margin-top: 70px;
-}
-
-.card .details p {
-  font-size: 15px;
-  line-height: 5px;
-  transform: rotate(-10deg);
-  padding: 0 0 0 20px;
-}
-
-.card .details h4 {
-  text-align: center;
-}
-
-.text-right {
-  text-align: right;
-}
-em{
-    margin:0;
-    padding : 0;
-  }
-  p{
-    position : absolute;
-    top : 50%;
-    left : 50%;
-    transform:translate(-50%,-50%);
-    color : #664390;
-    text-transform: uppercase;
-    letter-spacing : 1rem;
-    font-size : 2rem;
-    border-left : 3px solid white;
-    border-right : 3px solid white;
-  
-    padding : 1rem;
-    padding-right : 0rem;
-    font-weight : 600;
-    
-    overflow : hidden;
-    white-space: nowrap;
-    width : 21rem;
-    animation : largeur 5s infinite;
-  }
-  .small{
-    position : absolute;
-    right : 45%;
-    width: 0;
-    overflow : hidden;
-    animation : showSmall 5s infinite;
-  }
-  .u{
-    right: 5%;
-  }
-  .big{
-    animation : showBig 5s infinite;
-  }
-  .fa{
-    color:red;
-  }
-  @keyframes showSmall{
-    0%{
-      width : 0;
-  
+@keyframes pulse {
+    0% {
+    transform: scale3d(1, 1, 1);
     }
-    20%{
-      width : 0rem;
-      opacity : 1;
+    50% {
+    transform: scale3d(1.09, 1.09, 1.09);
     }
-    22%{
-      width : 2rem;
-      opacity : 1;
+    100% {
+    transform: scale3d(1, 1, 1);
     }
-    70%{
-      width : 2rem;
-      opacity : 1;
-    }
-    90%{
-      width : 2rem;
-      opacity : 1;
-    }
-    92%{
-      width : 0rem;
-      opacity : 0;
-    }
-  }
-  @keyframes showBig{
-    0%{
-    }
-    19%{
-      opacity : 1;
-    }
-    25%{
-      opacity : 0;
-      width : 0;
-    }
-    90%{
-      opacity : 0;
-      width : 0;
-    }
-    100%{
-      opacity : 1;
-      width : 100%;
-    }
-  }
-  @keyframes largeur{
-    0%{
-      width: 21rem;
-      letter-spacing : 1rem;
-    }
-    50%{
-      letter-spacing : 0rem;
-    }
-    90%{
-      width: 6.5rem;
-      letter-spacing : 0rem;
-    }
-    100%{
-      width: 21rem;
-    }
-  }
+  } 
+ .spin:active {
+     width: 70px;
+     height: 70px;
+     font-size: 20px;
+     background: #ffe605;
+ }
